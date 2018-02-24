@@ -1,0 +1,39 @@
+项目:crawlspider
+    详情页规则 tech/\d+.html
+    tech/.*
+
+id
+url
+pname   职位
+smoney 工资前后
+emoney
+tags  职位简介
+syear 工作年限前后
+eyear
+degree 学历
+advantage 福利
+jobdesc 工作描述
+jobaddr 工作地点
+company 公司名称
+num 招聘人数
+crawl_time 抓取时间
+
+
+详情页分析
+panme //div[@class="pos_base_info"]/span[1]
+money //div[@class="pos_base_info"]/span[2]/text()
+smoney = money.split('-')[0]
+emoney = money.split('-')[1]
+location  //div[@class="pos-area"]/span/span[1]/text()
+tags = //div[@class="item_con pos_info"]/span/text()
+advantage = //div[@class="pos_welfare"]/span/text()
+advantage = ','.join(advantage)
+num = //div[@class="pos_base_condition"]/span[1]/text()
+degree = //div[@class="pos_base_condition"]/span[2]/text()
+year = response.xpath('//div[@class="pos_base_condition"]/span[3]/text()').extract()[0]
+syear ,eyear = self.process_year(year)
+jobaddr //div[@class="pos-area"]/span[2]/text()
+jobdesc  //div[@class="posDes"]/div/text()
+jobdesc = ''.join(jobdesc)
+company  //div[@class="baseInfo_link"]/a/text()
+crawl_time   datetime.datetime.now().strftime('%Y-%m-%d')
