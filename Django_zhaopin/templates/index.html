@@ -1,0 +1,162 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>找工作-互联网招聘求职网</title>
+
+<!-- 静态加载css样式 -->
+{% load static from staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/job_global.css' %}">
+<script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/zidingyi.js' %}"></script>
+
+</head>
+<body>
+
+<input type="hidden" id="serverTime" value="1508977613973">
+
+<!-- 页面主体START -->
+
+<div id="content-container">
+	<form action="" method="get">
+		<div class="search-wrapper   no-related-word ">
+			<div id="searchBar" class="search-bar">
+				<div class="tab-wrapper">
+					<a id="tab_pos" class="active" rel="nofollow" href="javascript:;">职位 ( <span>500+</span> ) </a>
+					<a id="tab_comp" class="disabled" rel="nofollow" href="javascript:;">公司 ( <span>0</span> ) </a>
+				</div>
+				<div class="input-wrapper" data-lg-tj-track-code="search_search" data-lg-tj-track-type="1">
+					<div class="keyword-wrapper">
+						<span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+						<input type="text" id="keyword" autocomplete="off" maxlength="64" placeholder="搜索职位/公司" name="pname" value="" class="ui-autocomplete-input" style="height:46px;">
+					</div>
+					<input type="submit" id="submit" value="搜索">
+				</div>
+			</div>
+		</div>
+
+		<!-- 搜索输入框模块 -->
+		<div id="main_container">
+			<!-- 左侧 -->
+			<div class="content_left">
+				<div id="positionHead" class="">
+					<ul class="order" id="order">
+						<li class="wrapper">
+							<div class="item order">
+								<span class="title">排序方式：</span>
+								<input type="submit" id="submit2" value="最新" style="padding-top:3px;background:#fafafa;">
+								
+							</div>
+							<div class="item edu selectUI">
+								<span class="title">学历要求：</span>
+								<div class="selectUI-text value text">
+									<span>不限</span><i><input type="text"  name="edu" value="" class="edu_val"></i>
+									<ul class="edu_ul hidden">	
+										<li><a rel="nofollow" data-edu="e01" >不限</a></li>
+										<li><a rel="nofollow" data-edu="e02" >大专</a></li>
+										<li><a rel="nofollow" data-edu="e03" >本科</a></li>
+										<li><a rel="nofollow" data-edu="e04" >硕士</a></li>
+										<li><a rel="nofollow" data-edu="e05" >博士</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="s_position_list " id="s_position_list">
+				<!-- 切换分站 -->
+					<ul class="item_con_list">
+
+						<li class="con_list_item default_list" >
+                        {% for zhilian in zhilianlist %}
+							<div class="list_item_top">
+								<div class="position">
+									<div class="p_top">
+									<a class="position_link" href="">
+									<h3>{{ zhilian.pname }}</h3>
+									<span class="add">[<em>{{ zhilian.location }}</em>]</span>
+									</a>
+									<span class="format-time">{{ zhilian.date_pub }}</span>
+									</div>
+									<div class="p_bot">
+									<div class="li_b_l">
+									<span class="money">{{ zhilian.smoney }}-{{ zhilian.emoney }}</span>
+									<!--<i></i>-->{{ zhilian.syear }}-{{ zhilian.eyear }} / {{ zhilian.degree }}
+									</div>
+									</div>
+								</div>
+								<div class="company">
+									<div class="company_name">
+									<a href="https://www.lagou.com/gongsi/88912.html" target="_blank">{{ zhilian.company }}</a>
+									</div>
+									<div class="industry">
+
+									</div>
+								</div>
+							</div>
+							<div class="list_item_bot">
+								<div class="li_b_l">
+                                    <a href="{{ zhilian.url }}">详情链接</a>
+								</div>
+								<div class="li_b_r">福利:{{ zhilian.advantage }}</div>
+							</div>
+                         {% endfor %}
+						</li>
+
+					</ul>
+					<!-- 分页 -->
+					<div class="item_con_pager">
+						<div class="pager_container">
+{#							<a rel="nofollow" href="javascript:;" class="page_no pager_prev_disabled" data-index="">上一页</a>#}
+{#							<a href="" class="page_no">1</a>#}
+{#							<a href="" class="page_no">2</a>#}
+{#							<a href="" class="page_no">3</a>#}
+{#							<a href="" class="page_no">4</a>#}
+{#							<a href="" class="page_no">5</a>#}
+{#							<a href="" class="page_no">6</a>#}
+{##}
+{#							<a href="" class="page_no" data-index="2">下一页</a>#}
+                            <ul class="pagination">
+                                <a  class="page_no"  href="/index?{{pIndex|add:-1}}&{{where|join:'&'}}">上一页</a>
+                                {%for pindex in plist%}
+                                    <a class="page_no " style="color:greenyellow" href="/index?{{pindex}}&{{where|join:'&'}}">{{ pindex }}</a>
+
+{#                                    {% if pIndex == pindex %}#}
+{#                                        <a class="page_no " style="color:greenyellow" href="/index?{{pindex}}&{{where|join:'&'}}">{{ pindex }}</a>#}
+{#                                    {% else %}#}
+{#                                        <a   class="page_no" href="/index?{{pindex}}&{{where|join:'&'}}">{{pindex}}</a>#}
+{#                                    {% endif %}#}
+                                {% endfor %}
+                                <a class="page_no " href="/index?{{pIndex|add:+1}}&{{where|join:'&'}}">下一页</a>
+
+                            </ul>
+						</div>
+					</div>
+				</div>
+				<!-- 右侧 -->
+			</div>
+		</div>
+	</form>
+
+</div>
+<!-- 页面主体END -->
+<!-- footer -->
+<!--
+<script type="text/javascript">
+	$('.pager_container .page_no').click(function(){
+		$(this).addClass('pager_is_current'); //IE,FF
+		$(this).siblings().removeClass('pager_is_current'); //Webkit
+	});
+</script>
+-->
+<script type="text/javascript">
+	//公司和职位切换
+	choice();
+	//学历选择
+	contShow();
+	//判断路径
+	urlPan()
+	
+
+</script>
+</body>
+</html>
