@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="jiangzhixue_ali">
+    <serverData>
+      <paths name="jiangzhixue_ali">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/yingcai_py" local="$PROJECT_DIR$" web="/" />
+            <mapping local="" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

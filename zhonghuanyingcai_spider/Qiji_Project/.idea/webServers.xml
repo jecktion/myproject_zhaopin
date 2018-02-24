@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c78118d4-27e9-4b89-955a-428dd11b214e" name="jiangzhixue_ali" url="http://101.132.108.7">
+        <fileTransfer host="101.132.108.7" port="22" rootFolder="/root/yingcai_py" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

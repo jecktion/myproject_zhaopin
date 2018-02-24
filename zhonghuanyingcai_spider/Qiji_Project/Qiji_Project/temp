@@ -1,0 +1,16 @@
+item["url"] = url
+item["pname"] = pname
+item["smoney"] = smoney
+item["emoney"] = emoney
+item["location"] = location
+item["syear"] = syear
+item["eyear"] = eyear
+item["degree"] = degree
+item["ptype"] = ptype
+item["tags"] = tags
+item["date_pub"] = date_pub
+item["advantage"] = advantage
+item["jobdesc"] = jobdesc
+item["jobaddr"] = jobaddr
+item["company"] = company
+item["crawl_time"] = crawl_time
