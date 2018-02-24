@@ -1,0 +1,49 @@
+项目实现：
+    crawlspider
+    列表页：zpbiaoqian/o\d/_it/
+    职位详情页规则：  zpruanjianhulianwang/\d+.htm
+    其它包含详情页的链接（列表页）
+        zhaopin/.*       首页  zpruanjiangongchengshi/o\d
+        gongsi/j\d+.html 公司  zpruanjianhulianwang/\d+.htm
+        jobs/list_.*     校园  zpbiaoqian/o\d/_it/
+
+
+
+字段:
+    表名：qiji_job
+            url
+            pname
+            smoney
+            emoney
+            location
+            syear
+            eyear
+            degree
+            ptype
+            tags
+            date_pub
+            advantage
+            jobdesc
+            jobaddr
+            company
+            crawl_time
+
+
+
+
+字段提取
+    pname:(//div[@class="d-c-left-hear"]/h1[@class="f24 fc4b h31"]/text())
+    url:("url", response.url)  http://bj.ganji.com/zpityunweiyuceshi/2794737318x.htm
+    money:(//div[@class="d-c-left-age d-c-left-firm mt-30"]/ul/li[@class="fl"][2]/em[@class="salary"]/text())
+    location:(//div[@class="d-c-left-age d-c-left-firm mt-30"]/ul/li[8]/em/a[1]/text())
+    year:(//div[@class="d-c-left-age d-c-left-firm mt-30"]/ul/li[4]/em/text())
+    degree:(//div[@class="d-c-left-age d-c-left-firm mt-30"]/ul/li[3]/em/text())
+    ptype:(//div[@class="d-c-left-age d-c-left-firm mt-30"]/ul/li[1]/em/span/text())
+    num :(//div[@class="d-c-left-age d-c-left-firm mt-30"]/ul/li[6]/em/text())
+
+    date_pub:(//div[@class="d-c-left-hear"]/p/span[1]/text())
+    advantage:(//div[@class="d-c-left"]/div[@class="d-c-left-weal d-left-weal-firm clearfix mb-30"]/div[@class="d-welf-items"]/ul/li/text())
+    jobdesc:(//div[@class="js-tab-show d-l-account fc4b"]/div[@class="deta-Corp"]/text())
+    jobaddr:(//div[@class="js-tab-show d-l-account fc4b"]/dl/dd[3]/text())
+    company:(//div[@class="d-c-left"]/div[@class="js-tab-show d-com-intr fc4b"]/p/text())
+    ("company_url", "#job_company dt a::attr(href)")

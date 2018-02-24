@@ -1,0 +1,50 @@
+项目实现：
+    crawlspider
+    列表页：http://www.jobcn.com/
+    职位详情页规则：http://www.jobcn.com/position/detail.xhtml
+    其它包含详情页的链接（列表页）
+         首页
+         公司
+         校园
+
+
+
+字段:
+    表名：qiji_job
+            url
+            pname
+            smoney
+            emoney
+            location
+            syear
+            eyear
+            degree
+            num
+            ptype
+            tags
+            date_pub
+            advantage
+            jobdesc
+            jobaddr
+            company
+            crawl_time
+
+
+
+
+字段提取
+    pname:(//div[@id="posMainBox"]/div[@class="name_pos"]/h2/span/text())
+    url:("url", response.url)
+    money:(//div[@id="posMainBox"]/div[@class="name_pos"]/div[@class="attributes clearfix"]/div[@class="salary"]/div[@class="salary_body"]/text())
+    location:(//div[@id="posMainBox"]/div[@class="name_pos"]/div[@class="attributes clearfix"]/dl[3]/dd/text())
+    year:(//div[@id="posMainBox"]/div[@class="info_pos"]/div[@class="attributes clearfix"]/dl[2]/dd/text())
+    degree:(//div[@id="posMainBox"]/div[@class="info_pos"]/div[@class="attributes clearfix"]/dl[1]/dd/text())
+
+    num :(//div[@id="posMainBox"]/div[@class="name_pos"]/div[@class="attributes clearfix"]/dl[2]/dd/text())
+
+    date_pub:(//div[@id="posMainBox"]/div[@class="name_pos"]/div[@class="attributes clearfix"]/dl[4]/dd/text())
+    advantage:(//div[@class="weal_pos"]//text())
+    jobdesc:(//div[@id="posMainBox"]/div[@class="desc_pos"]/text())
+    jobaddr:(//div[@class="address_pos"]/dl[1]/dd/div[@class="tab_map"]/div[@class="tab_map_title"]/text())
+    company:(//div[@class="base"]/h2/text())
+    ("company_url", "()")

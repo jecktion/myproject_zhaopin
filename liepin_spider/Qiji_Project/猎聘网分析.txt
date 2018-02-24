@@ -1,0 +1,49 @@
+项目实现：
+    crawlspider
+    列表页：https://www.liepin.com/zhaopin/
+    职位详情页规则：  job/\d+?.shtml
+    其它包含详情页的链接（列表页）
+     首页
+     公司
+     校园
+
+
+
+字段:
+    表名：qiji_job
+            url
+            pname
+            smoney
+            emoney
+            location
+            syear
+            eyear
+            degree
+            ptype
+            tags
+            date_pub
+            advantage
+            jobdesc
+            jobaddr
+            company
+            crawl_time
+
+
+
+
+字段提取
+    pname:(//div[@class="title-info"]/h1/text())
+    url:("url", response.url)
+    money:(//div[@class="job-title-left"]/p[1]/text())
+    location:(//div[@class="job-title-left"]/p[2]/span/a/text())
+    year:(//div[@class="job-qualifications"]/span[2]/text())
+    degree:(//div[@class="job-qualifications"]/span[1]/text())
+    ptype:()
+    num :()
+
+    date_pub:(//div[@class="job-title-left"]/p[2]/time/text())
+    advantage:(//div[@class="tag-list"]/span/text())
+    jobdesc:(//div[@class="content content-word"]/text())
+    jobaddr:(//div[@class="new-compwrap"]/ul/li[3]/text())
+    company:(//div[@class="company-logo"]/p/a/text())
+    ("company_url", "#job_company dt a::attr(href)")
