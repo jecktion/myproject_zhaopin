@@ -1,0 +1,17 @@
+scrapy 模拟登陆
+
+    通过抓包获取cookie
+    # 如果在header里加cookie无效的情况，单独指定cookie参数构建请求
+
+scrapy post请求
+
+
+scrapy 过滤url机制（指纹识别）: 发过的请求，就不再加入请求队列了
+
+
+专门抓取全站数据的爬虫类
+    CrawlSpider
+        适合网站链接比较明显，容易抓到的情况
+
+    生成一个crawlspider
+    scrapy genspider -t crawl tencent tencent.com

@@ -1,0 +1,48 @@
+项目实现：
+    crawlspider
+    职位详情页规则：jobs/\d+.html
+    其它包含详情页的链接（列表页）
+        zhaopin/.*       首页
+        gongsi/j\d+.html 公司
+        jobs/list_.*     校园
+
+
+字段:
+    表名：lagou_job
+            url
+            pname
+            smoney
+            emoney
+            location
+            syear
+            eyear
+            degree
+            ptype
+            tags
+            date_pub
+            advantage
+            jobdesc
+            jobaddr
+            company
+            crawl_time
+
+反反爬机制
+
+
+
+字段提取
+("title", ".job-name::attr(title)")
+("url", response.url)
+("salary", ".job_request .salary::text")
+("job_city", "//*[@class='job_request']/p/span[2]/text()")
+("work_years", "//*[@class='job_request']/p/span[3]/text()")
+("degree_need", "//*[@class='job_request']/p/span[4]/text()")
+("job_type", "//*[@class='job_request']/p/span[5]/text()")
+
+("tags", '.position-label li::text')
+("publish_time", ".publish_time::text")
+("job_advantage", ".job-advantage p::text")
+("job_desc", ".job_bt div")
+("job_addr", ".work_addr")
+("company_name", "#job_company dt a img::attr(alt)")
+("company_url", "#job_company dt a::attr(href)")
